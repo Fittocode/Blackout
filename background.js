@@ -1,3 +1,0 @@
-class background {
-    constructor()
-}
