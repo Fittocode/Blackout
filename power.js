@@ -6,7 +6,7 @@ class Power {
       this.maxY = 800
 
       this.batteries = []
-      for (var i = 0; i < 15; i++) {
+      for (var i = 0; i < 20; i++) {
         this.batteries.push(new Battery(Math.floor(Math.random()*(this.maxX - 30)), Math.floor(Math.random()*(this.maxY - 40))))
       }
       this.lightning = []

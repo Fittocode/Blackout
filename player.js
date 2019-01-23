@@ -44,12 +44,7 @@ class Player {
             ctx.closePath()
             
             ctx.fillStyle = "black"
-            ctx.fill() 
-            ctx.rect(this.x, this.y, 20,20)
-            
-            ctx.fillStyle = "black"
             ctx.fill()
-
 
             // ctx.beginPath();
             // ctx.arc(200, 200, 100, 0, 2 * Math.PI);
@@ -68,8 +63,8 @@ class Player {
         this.fRadius -= .15
       }
       receiveBattery() {
-        this.fLength += 35
-        this.fRadius += 20
+        this.fLength += 45
+        this.fRadius += 30
       }
       receiveLightning() {
           this.speed += 1
