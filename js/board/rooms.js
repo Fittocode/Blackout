@@ -29,18 +29,29 @@ class Rooms {
                 var yRoom = row*roomHeight
                 // Only draw the wall if the player is not in the current room
                 if (xRoom <= player.x && player.x <= xRoom+roomWidth && yRoom <= player.y && player.y <= yRoom+roomHeight) {
-                    // TODO: draw the doors inside this.rooms[row][col]
-                    
                     ctx.drawImage(Rooms.verticalImg, xRoom-4, yRoom, 15,roomHeight) // left wall
                     ctx.drawImage(Rooms.verticalImg, xRoom+roomWidth+4, yRoom, -15,roomHeight) // right wall
                     ctx.drawImage(Rooms.horizontalImg, xRoom, yRoom + roomHeight-10, roomWidth,15) // bottom wall
                     ctx.drawImage(Rooms.horizontalImg, xRoom, yRoom-5, roomWidth,15) // top wall
-                    // ctx.drawImage(Room.horizontalImg, x)
+                }   ctx.fillStyle = "red"
+                    ctx.fillRect(xRoom,yRoom + (roomHeight/2-20), 10, 50) // left door
+                    ctx.fillRect(xRoom + roomWidth-10, yRoom + (roomHeight/2 -20), 10, 50) // right door
+                    ctx.fillRect(xRoom + (roomWidth/2-15), yRoom, 50, 10) // bottom door
+                    ctx.fillRect(xRoom + (roomWidth/2-15), yRoom + (roomHeight-10), 50, 10) // top door
                 }
-            }
         }
+        ctx.fillStyle = "blue"
+        ctx.fillRect(885, 1000-10, 50, 10)
         ctx.restore()
     }
+    // drawDoors(ctx) {
+    //     ctx.save()        
+    //         ctx.fillRect(xRoom,yRoom + (roomHeight/2-20), 10, 50) // left door
+    //         ctx.fillRect(xRoom + roomWidth-10, yRoom + (roomHeight/2 -20), 10, 50) // right door
+    //         ctx.fillRect(xRoom + (roomWidth/2-15), yRoom, 50, 10) // bottom door
+    //         ctx.fillRect(xRoom + (roomWidth/2-15), yRoom + (roomHeight-10), 50, 10) // top door
+    //     ctx.restore()        
+    // }
     drawBlackRectangles(ctx, player) {
         ctx.save()
         var canvasWidth = ctx.canvas.width
@@ -64,6 +75,7 @@ class Rooms {
         ctx.restore()
     }
 }
+
 
 
 Rooms.verticalImg = new Image()
