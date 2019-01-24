@@ -1,6 +1,6 @@
 class Rooms {
     constructor(nbCols,nbRows){
-        this.nbRows= nbRows
+        this.nbRows = nbRows
         this.nbCols = nbCols
         this.rooms = []
         for (var row = 0; row < this.nbRows; row++) {
