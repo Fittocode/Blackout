@@ -35,6 +35,8 @@ canvas.addEventListener('click', function(event) {
     });
 }, false);
 
+let words=["typescript", "repository", "concatenate", "algorithm", "statistical"]
+
 difficultyArray.push(
   {
     name: "easy",

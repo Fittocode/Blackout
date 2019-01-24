@@ -1,9 +1,3 @@
-// TODO
-// CHECK SIZE OF CANVAS
-// CHECK WHY BLACK IS NOT APPEARING
-// DOORS
-// HIGH LIGHT COLOR OF DIFFICULTY?
-
 
 // js/main.js
 
@@ -15,7 +9,6 @@ var ctx = canvas.getContext('2d')
 var width = canvas.width
 var height = canvas.height
 
-// Thors variables
 var menuInit = false
 var rooms;
 var power;
@@ -23,21 +16,54 @@ var light;
 
 var diffic;
 
-// var randomX = power.randomX
-// var randomY = power.randomY
+var randomNumber;
+
+var blueDoor= [0,0,0,0]
+
+
+var easyBlue=[
+//  x    y   w  h
+// bottom
+  [900,990,50,10],
+  [700,990,50,10],
+  [500,990,50,10],
+  [300,990,50,10],
+// middle - under
+  [900,510,50,10],
+  [700,510,50,10],
+  [500,510,50,10],
+  [300,510,50,10],
+// middle - over
+  [900,490,50,10],
+  [700,490,50,10],
+  [500,490,50,10],
+  [300,490,50,10],
+// top
+  [900,0,50,10],
+  [700,0,50,10],
+  [500,0,50,10],
+  [300,0,50,10],
+// right
+  [1190,800,10,50],
+  [1190,650,10,50],
+  [1190,400,10,50],
+  [1190,150,10,50],
+// left
+  [0,800,10,50],
+  [0,650,10,50],
+  [0,400,10,50],
+  [0,150,10,50]
+]
+var meidumBlue=[]
+var hardBlue=[]
+
+randomNumber = Math.floor(Math.random()*easyBlue.length)  
 
 // FOR MOUSE
 var elemLeft = canvas.offsetLeft
 var elemTop = canvas.offsetTop
 var difficultyArray = [];
 
-
-/* THIS HAS TO BE REFACTORED SOMEWHERE */
-/* THIS HAS TO BE REFACTORED SOMEWHERE */
-/* THIS HAS TO BE REFACTORED SOMEWHERE */
-/* THIS HAS TO BE REFACTORED SOMEWHERE */
-/* THIS HAS TO BE REFACTORED SOMEWHERE */
-/* THIS HAS TO BE REFACTORED SOMEWHERE */
 
 
 
@@ -51,9 +77,18 @@ canvas.addEventListener('click', function(event) {
             switch(element.name) {
               case "easy":
                 menuInit = true
-                rooms = new Rooms(1, 2)
                 power = new Power (40,30,'/battery5.png', 15)
-                light = new Power (40, 30,'/lightning.png', 0, 2)  
+                light = new Power (40, 30,'/lightning.png', 0, 2)
+
+                randomNumber = Math.floor(Math.random()*easyBlue.length)
+
+                blueDoor[0]=easyBlue[randomNumber][0]
+                blueDoor[1]=easyBlue[randomNumber][1]
+                blueDoor[2]=easyBlue[randomNumber][2]
+                blueDoor[3]=easyBlue[randomNumber][3]
+                
+                
+                rooms = new Rooms(1, 2)
                 gameAnimation()
               break;
               case "medium":
