@@ -1,18 +1,18 @@
 class Power {
-    constructor(width, height, src, batteriesNumber, lightningNumber){
+    constructor(width, height, src, batteriesNumber, lightningNumb){
       this.width = width
       this.height = height
       this.maxX = 1200
       this.maxY = 800
       this.batteriesNumber = batteriesNumber
-      this.lightningNumber = lightningNumber
+      this.lightningNumb = lightningNumb
 
       this.batteries = []
       for (var i = 0; i < batteriesNumber; i++) {
         this.batteries.push(new Battery(Math.floor(Math.random()*(this.maxX - 30)), Math.floor(Math.random()*(this.maxY - 40))))
       }
       this.lightning = []
-      for (var j = 0; j < lightningNumber; j++) {
+      for (var j = 0; j < lightningNumb; j++) {
         this.lightning.push(new Lightning(Math.floor(Math.random()*(this.maxX - 30)), Math.floor(Math.random()*(this.maxY - 40))))
       }
     }

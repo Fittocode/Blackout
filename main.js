@@ -22,7 +22,7 @@ var height = canvas.height
 var menuInit = false
 var rooms;
 var power;
-var lightning;
+var light;
 
 // var randomX = power.randomX
 // var randomY = power.randomY
@@ -52,21 +52,21 @@ canvas.addEventListener('click', function(event) {
                 menuInit = true
                 rooms = new Rooms(2, 2)
                 power = new Power (40,30,'/battery5.png', 50)
-                lightning = new Power (40, 30,'/lightning.png', 5, 5)  
+                light = new Power (40, 30,'/lightning.png', 50, 20)  
                 gameAnimation()
               break;
               case "medium":
                 menuInit = true
                 rooms = new Rooms(3, 3)
                 power = new Power (40,30,'/battery5.png', 50)
-                lightning = new Power (40, 30,'/lightning.png', 5, 5)  
+                light = new Power (40, 30,'/lightning.png', 5, 5)  
                 gameAnimation()
               break;
               case "hard":
                 menuInit = true
                 rooms = new Rooms(4, 4)
                 power = new Power (40,30,'/battery5.png', 50)
-                lightning = new Power (40, 30,'/lightning.png', 5, 5)  
+                light = new Power (40, 30,'/lightning.png', 5, 5)  
                 gameAnimation()
                 break;
               }
@@ -134,11 +134,17 @@ var upWalls = new Walls (
   function drawPower() {
   return power.draw(ctx) 
   }
+
+
+  function lightPower() {
+  return light.draw(ctx) 
+  }
   
 
   function drawEverything(){
     ctx.clearRect(0,0,canvas.width,canvas.height)
     drawPower()
+    lightPower()
     rooms.drawWalls(ctx, tesla)
     tesla.draw(ctx)
     upWalls.draw(ctx)
@@ -147,6 +153,7 @@ var upWalls = new Walls (
   function updateEverything() {
     tesla.update()
     power.update()
+    light.update()
     upWalls.update()
     for (var i = 0; i < power.batteries.length; i++) {
       if (testCollision(tesla, power.batteries[i])) {
@@ -154,10 +161,10 @@ var upWalls = new Walls (
         power.batteries.splice(i,1) // remove the batteries at index i
       }
     }
-    for (var j = 0; j < power.lightning.length; j++) {
-      if (testCollision(tesla, power.lightning[j])) {
+    for (var j = 0; j < light.lightning.length; j++) {
+      if (testCollision(tesla, light.lightning[j])) {
         tesla.receiveLightning()
-        power.lightning.splice(j,1) // remove the batteries at index i
+        light.lightning.splice(j,1) // remove the batteries at index i
       }
     }
   }  
@@ -189,7 +196,7 @@ var upWalls = new Walls (
         tesla.speed = -2
         break
       case 38: // up
-        tesla.speed = 2
+        if (tesla.poweredUp){tesla.speed=5}else{tesla.speed=2}
         break    
       case 37: // left
         // tesla.angle -= 0.1 // Naive solution
@@ -266,8 +273,6 @@ on_fullscreen_change()
 
 document.addEventListener('mozfullscreenchange', on_fullscreen_change);
 document.addEventListener('webkitfullscreenchange', on_fullscreen_change);
-
-
 
  */
 

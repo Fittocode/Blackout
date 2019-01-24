@@ -11,6 +11,7 @@ class Player {
         // this.fWidth = 100
         this.fRadius = 100
         this.radius = 50
+        this.poweredUp=false
         // this.img = new Image()
         // this.img.src = 'images'
     }
@@ -67,6 +68,12 @@ class Player {
         this.fRadius += 30
       }
       receiveLightning() {
-          this.speed += 1
+          this.speed=5
+          this.poweredUp = true
+          var that=this
+          setTimeout(() => {
+              that.poweredUp=false
+          }, 3000);
+          /* this.speed += 1 */
       }
 }
