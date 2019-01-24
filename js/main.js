@@ -51,7 +51,7 @@ canvas.addEventListener('click', function(event) {
             switch(element.name) {
               case "easy":
                 menuInit = true
-                rooms = new Rooms(1, 2)
+                rooms = new Rooms(2, 2)
                 power = new Power (40,30,'/battery5.png', 15)
                 light = new Power (40, 30,'/lightning.png', 0, 2)  
                 gameAnimation()
@@ -167,13 +167,13 @@ var title = new Menu (
     }
   }  
 
+ // player collides with batteries and lightning 
   function testCollision(player, battery) {
     return dist(player,battery) <= player.radius
   }
   function testCollision(player, lightning) {
     return dist(player,lightning) <= player.radius
   }
-
   function dist(obj1, obj2) {
     return Math.sqrt((obj1.x-obj2.x)**2 + (obj1.y-obj2.y)**2)
   }  
@@ -235,13 +235,12 @@ var title = new Menu (
     console.log(menuImg)
     let ctx = canvas.getContext('2d');
     ctx.drawImage(menuImg, 0, 0, 200, 200)
-
 }
 
   function drawMenu(){
     this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
     // drawText("center", "black", "darkred", 3, "bold 100px Times", "BLACKOUT", 200, "BLACKOUT", 200)
-    drawText("center", "white", "white", 3, "bold 50px Times", "EASY 1x2", 200) 
+    drawText("center", "white", "white", 3, "bold 50px Times", "EASY 2x2", 200) 
     drawText("center", "white", "white", 3, "bold 50px Times", "MEDIUM 2x2", 300) 
     drawText("center", "white", "white", 3, "bold 50px Times", "HARD 3x3", 400) 
     // this.ctx.font = "bold 20px Arial";
