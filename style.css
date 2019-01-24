@@ -1,3 +1,12 @@
+body {
+    background: black;
+}
+
+.menu-title {
+    margin: auto;
+    width: 30%;
+}
+
 canvas {
     background-image: url('img/background.png');
     padding-left: 0;

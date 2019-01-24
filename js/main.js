@@ -21,6 +21,8 @@ var rooms;
 var power;
 var light;
 
+var diffic;
+
 // var randomX = power.randomX
 // var randomY = power.randomY
 
@@ -78,21 +80,21 @@ difficultyArray.push(
     name: "easy",
     width: 250,
     height: 60,
-    top: 350,
+    top: 150,
     left: 480
 },
 { 
     name: "medium",
     width: 300,
     height: 60,
-    top: 450,
+    top: 250,
     left: 450
 },
 {
     name: "hard",
     width: 300,
     height: 60,
-    top: 550,
+    top: 350,
     left: 450
 }
 );
@@ -123,6 +125,11 @@ var walls = new Walls (
     '/hwall.png',
 )   
 
+var title = new Menu (
+    0, 0,
+    '/title.png'
+)
+
   // TODO -ROTATE CANVAS EVERY TIME PLAYER LEAVES ROOM
 
   // function rotateCanvas() {
@@ -131,6 +138,7 @@ var walls = new Walls (
 
   function drawEverything(){
     ctx.clearRect(0,0,canvas.width,canvas.height)
+    this.ctx.fillStyle = "black";
     // rotateCanvas()
     power.draw(ctx)
     light.draw(ctx)
@@ -222,29 +230,22 @@ var walls = new Walls (
   
   var menuImg = new Image();   // Create new img element
   menuImg.src = 'img/title.png'; // Set source path
-  
-  
+
   function drawImage() {
-    var menuImg = new Image();   // Create new img element
-    menuImg.src = 'img/title.png'; // Set source path
     console.log(menuImg)
-    const ctx = canvas.getContext('2d');
+    let ctx = canvas.getContext('2d');
     ctx.drawImage(menuImg, 0, 0, 200, 200)
 
 }
 
-
-
-
   function drawMenu(){
     this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
     // drawText("center", "black", "darkred", 3, "bold 100px Times", "BLACKOUT", 200, "BLACKOUT", 200)
-    drawText("center", "black", "white", 3, "bold 50px Times", "EASY 1x2", 400, "EASY 1x2", 400) 
-    drawText("center", "black", "yellow", 3, "bold 50px Times", "MEDIUM 2x2", 500, "MEDIUM 2x2", 500) 
-    drawText("center", "black", "firebrick", 3, "bold 50px Times", "HARD 3x3", 600, "HARD 3x3", 600) 
-    this.ctx.font = "bold 20px Arial";
-    this.ctx.fillText("CHOOSE YOUR DIFFICULTY!",this.canvas.width/2,750);
-    drawImage()
+    drawText("center", "white", "white", 3, "bold 50px Times", "EASY 1x2", 200) 
+    drawText("center", "white", "white", 3, "bold 50px Times", "MEDIUM 2x2", 300) 
+    drawText("center", "white", "white", 3, "bold 50px Times", "HARD 3x3", 400) 
+    // this.ctx.font = "bold 20px Arial";
+    // this.ctx.fillText("CHOOSE YOUR DIFFICULTY!",this.canvas.width/2,750);
   }
   
   function drawText(textAlign, fillStyle, strokeStyle, lineWidth, font, fillText, fy, strokeText, sy){

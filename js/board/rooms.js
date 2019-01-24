@@ -40,6 +40,7 @@ class Rooms {
                     ctx.fillRect(xRoom + (roomWidth/2-15), yRoom + (roomHeight-10), 50, 10) // top door
                 }
         }
+        // BLUE DOOR
         ctx.fillStyle = "blue"
         ctx.fillRect(885, 1000-10, 50, 10)
         ctx.restore()
@@ -75,8 +76,6 @@ class Rooms {
         ctx.restore()
     }
 }
-
-
 
 Rooms.verticalImg = new Image()
 Rooms.verticalImg.src = "img/wall.png"
