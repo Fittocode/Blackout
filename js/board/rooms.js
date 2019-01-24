@@ -42,7 +42,8 @@ class Rooms {
         }
         // BLUE DOOR
         ctx.fillStyle = "blue"
-        ctx.fillRect(885, 1000-10, 50, 10)
+        //            x               y              w                   h
+        ctx.fillRect(blueDoor[0], blueDoor[1], blueDoor[2], blueDoor[3])
         ctx.restore()
     }
     // drawDoors(ctx) {
