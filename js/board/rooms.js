@@ -33,7 +33,7 @@ class Rooms {
                     ctx.drawImage(Rooms.verticalImg, xRoom+roomWidth+4, yRoom, -15,roomHeight) // right wall
                     ctx.drawImage(Rooms.horizontalImg, xRoom, yRoom + roomHeight-10, roomWidth,15) // bottom wall
                     ctx.drawImage(Rooms.horizontalImg, xRoom, yRoom-5, roomWidth,15) // top wall
-                }   ctx.fillStyle = "red"
+                }   ctx.fillStyle = "black"
                     ctx.fillRect(xRoom,yRoom + (roomHeight/2-20), 10, 50) // left door
                     ctx.fillRect(xRoom + roomWidth-10, yRoom + (roomHeight/2 -20), 10, 50) // right door
                     ctx.fillRect(xRoom + (roomWidth/2-15), yRoom, 50, 10) // bottom door

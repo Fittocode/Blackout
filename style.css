@@ -18,5 +18,19 @@ canvas {
 
 h1 {
     font-size: 100px;
-    font-color: black;
+    margin: auto;
+    text-align: center;
+    margin-top: 400px;
 }
+
+
+
+#gameover{
+    color: lightblue;
+}
+
+#youwon {
+    color: #ecda49;
+}
+
+

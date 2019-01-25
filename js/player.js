@@ -60,7 +60,7 @@ class Player {
         this.y +=  this.speed * Math.cos(this.angle)
         this.x += -this.speed * Math.sin(this.angle)
         // this.vAngle *=0.9
-        this.fLength -= .30
+        this.fLength -= .25
         this.fRadius -= .20
       }
       receiveBattery() {

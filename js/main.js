@@ -2,7 +2,7 @@
 // js/main.js
 
 var debug = true
-
+togglePlay()
 
 var canvas = document.querySelector('canvas')
 var ctx = canvas.getContext('2d')
@@ -24,34 +24,34 @@ var blueDoor= [0,0,0,0]
 var easyBlue=[
 //  x    y   w  h
 // bottom
-  [900,990,50,10],
-  [700,990,50,10],
-  [500,990,50,10],
-  [300,990,50,10],
+  [940,790,50,10],
+  [700,790,50,10],
+  [300,790,50,10],
+  [50,790,50,10],
 // middle - under
-  [900,510,50,10],
-  [700,510,50,10],
-  [500,510,50,10],
-  [300,510,50,10],
+  [900,400,50,10],
+  [700,400,50,10],
+  [510,400,50,10],
+  [300,400,50,10],
 // middle - over
-  [900,490,50,10],
-  [700,490,50,10],
-  [500,490,50,10],
-  [300,490,50,10],
+  [900,390,50,10],
+  [700,390,50,10],
+  [510,390,50,10],
+  [400,390,50,10],
 // top
   [900,0,50,10],
   [700,0,50,10],
-  [500,0,50,10],
+  [600,0,50,10],
   [300,0,50,10],
 // right
-  [1190,800,10,50],
-  [1190,650,10,50],
-  [1190,400,10,50],
-  [1190,150,10,50],
+  [990,700,10,50],
+  [990,650,10,50],
+  [990,400,10,50],
+  [990,200,10,50],
 // left
-  [0,800,10,50],
+  [0,700,10,50],
   [0,650,10,50],
-  [0,400,10,50],
+  [0,300,10,50],
   [0,150,10,50]
 ]
 var meidumBlue=[]
@@ -64,9 +64,6 @@ var elemLeft = canvas.offsetLeft
 var elemTop = canvas.offsetTop
 var difficultyArray = [];
 
-
-
-
 canvas.addEventListener('click', function(event) {
     var x = event.pageX - elemLeft,
         y = event.pageY - elemTop;
@@ -78,7 +75,7 @@ canvas.addEventListener('click', function(event) {
               case "easy":
                 menuInit = true
                 rooms = new Rooms(2, 2)
-                power = new Power (40,30,'/battery5.png', 15)
+                power = new Power (40,30,'/battery5.png', 20)
                 light = new Power (40, 30,'/lightning.png', 0, 2)
 
                 randomNumber = Math.floor(Math.random()*easyBlue.length)
@@ -88,22 +85,24 @@ canvas.addEventListener('click', function(event) {
                 blueDoor[2]=easyBlue[randomNumber][2]
                 blueDoor[3]=easyBlue[randomNumber][3]
                 
-                
-                rooms = new Rooms(1, 2)
+                rooms = new Rooms(2, 2)
                 gameAnimation()
               break;
               case "medium":
                 menuInit = true
                 rooms = new Rooms(2, 2)
-                power = new Power (40,30,'/battery5.png', 15)
+                power = new Power (40,30,'/battery5.png', 10)
                 light = new Power (40, 30,'/lightning.png', 0, 1)  
                 gameAnimation()
               break;
               case "hard":
+              canvas.style.backgroundImage = "url('img/Gallery2.jpg')";
                 menuInit = true
-                rooms = new Rooms(3, 3)
-                power = new Power (40,30,'/battery5.png', 20)
+                rooms = new Rooms(0, 0)
+                power = new Power (40,30,'/battery5.png', 10)
                 light = new Power (40, 30,'/lightning.png', 0, 0)  
+                canvas.width=1200
+                canvas.height=780
                 gameAnimation()
                 break;
               }
@@ -183,12 +182,22 @@ var title = new Menu (
     walls.draw(ctx)
     rooms.drawBlackRectangles(ctx, tesla)
   } 
+  var gameover = document.querySelector("#gameover")
 
   function updateEverything() {
+    // wallCollision(tesla)
     tesla.update()
     power.update()
     light.update()
     walls.update()
+    if (testDoorCollision(tesla, blueDoor)){
+      youwon.style.display = "block";
+    }
+    console.log(tesla.fRadius)  
+    if (tesla.fRadius < 5) {
+      gameover.style.display = "block"
+    }  
+     
     for (var i = 0; i < power.batteries.length; i++) {
       if (testCollision(tesla, power.batteries[i])) {
         tesla.receiveBattery()
@@ -203,17 +212,31 @@ var title = new Menu (
     }
   }  
 
- // player collides with batteries and lightning 
+  // function wallCollision(){
+  //   // ONLY CHECKS EASY LEVEL AND MIDDLE DOOR DOWNARD
+  //   if ((tesla.y + 10 > 380 && tesla.x < 250) || (tesla.y + 10 > 380 && tesla.x > 300)){
+  //     tesla.y=370
+  //   }
+  //   // ONLY CHECKS EASY LEVEL, MIDDLE DOOR TOP  
+  //   // if ((tesla.y + 10 < 380 && tesla.x < 250) || (tesla.y + 10 < 380 && tesla.x > 300)){
+  //   //   tesla.y=340}
+  //   }
+  
   function testCollision(player, battery) {
     return dist(player,battery) <= player.radius
   }
-  function testCollision(player, lightning) {
-    return dist(player,lightning) <= player.radius
+
+  function testDoorCollision(player, door) {
+    return distDoor(player,door) <= player.radius
   }
+  
+  function distDoor(obj1, obj2) {
+    return Math.sqrt((obj1.x-obj2[0])**2 + (obj1.y-obj2[1])**2)
+  } 
+
   function dist(obj1, obj2) {
     return Math.sqrt((obj1.x-obj2.x)**2 + (obj1.y-obj2.y)**2)
   }  
-
   // CONTROLS ACTIVATED
   document.onkeydown = function(e){
     e.preventDefault() // stop default behaviour (scrolling)
@@ -236,7 +259,7 @@ var title = new Menu (
     }
   }
   // CONTROLS DEACTIVATED
-  document.onkeyup = function(e){
+  document.onkeyup = function(e){ 
     switch (e.keyCode) {
       case 37: // left
       case 39: // right
@@ -276,11 +299,13 @@ var title = new Menu (
   function drawMenu(){
     this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
     // drawText("center", "black", "darkred", 3, "bold 100px Times", "BLACKOUT", 200, "BLACKOUT", 200)
-    drawText("center", "white", "white", 3, "bold 50px Times", "EASY 2x2", 200) 
-    drawText("center", "white", "white", 3, "bold 50px Times", "MEDIUM 2x2", 300) 
-    drawText("center", "white", "white", 3, "bold 50px Times", "HARD 3x3", 400) 
-    // this.ctx.font = "bold 20px Arial";
-    // this.ctx.fillText("CHOOSE YOUR DIFFICULTY!",this.canvas.width/2,750);
+    drawText("center", "white", "white", 3, "bold 50px Times", "EASY (High Batteries)", 200) 
+    drawText("center", "white", "white", 3, "bold 50px Times", "HARD (Low Batteries)", 300) 
+    drawText("center", "black", "white", 3, "bold 50px Times", "THE GALLERY", 400) 
+    this.ctx.font = "bold 20px Arial";
+    this.ctx.fillStyle = "lightblue"
+    this.ctx.fillText("YOUR FLASHLIGHT IS DYING.",this.canvas.width/2,20);
+    this.ctx.fillText("COLLECT BATTERIES TO KEEP IT ALIVE LONG ENOUGH TO FIND THE EXIT",this.canvas.width/2,90)
   }
   
   function drawText(textAlign, fillStyle, strokeStyle, lineWidth, font, fillText, fy, strokeText, sy){
@@ -290,9 +315,13 @@ var title = new Menu (
     this.ctx.lineWidth = lineWidth;
     this.ctx.font = font;
     this.ctx.fillText(fillText,this.canvas.width/2,fy);
-    this.ctx.strokeText(strokeText,this.canvas.width/2,sy);
+    this.ctx.strokeText(strokeText,this.canvas.width/2, sy);
   }
 
+  function playAudio(){
+    var audio = new Audio("Blackout2" + ".mp4");
+    audio.play();
+}
 
 drawMenu()
 
