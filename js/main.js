@@ -76,7 +76,7 @@ canvas.addEventListener('click', function(event) {
                 menuInit = true
                 rooms = new Rooms(2, 2)
                 power = new Power (40,30,'/battery5.png', 20)
-                light = new Power (40, 30,'/lightning.png', 0, 2)
+                // light = new Power (40, 30,'/lightning.png', 0, 2)
 
                 randomNumber = Math.floor(Math.random()*easyBlue.length)
 
@@ -92,7 +92,7 @@ canvas.addEventListener('click', function(event) {
                 menuInit = true
                 rooms = new Rooms(2, 2)
                 power = new Power (40,30,'/battery5.png', 10)
-                light = new Power (40, 30,'/lightning.png', 0, 1)  
+                // light = new Power (40, 30,'/lightning.png', 0, 1)  
                 gameAnimation()
               break;
               case "hard":
@@ -100,7 +100,7 @@ canvas.addEventListener('click', function(event) {
                 menuInit = true
                 rooms = new Rooms(0, 0)
                 power = new Power (40,30,'/battery5.png', 10)
-                light = new Power (40, 30,'/lightning.png', 0, 0)  
+                // light = new Power (40, 30,'/lightning.png', 0, 0)  
                 canvas.width=1200
                 canvas.height=780
                 gameAnimation()
@@ -176,7 +176,7 @@ var title = new Menu (
     this.ctx.fillStyle = "black";
     // rotateCanvas()
     power.draw(ctx)
-    light.draw(ctx)
+    // light.draw(ctx)
     rooms.drawWalls(ctx, tesla)
     tesla.draw(ctx)
     walls.draw(ctx)
@@ -188,7 +188,7 @@ var title = new Menu (
     // wallCollision(tesla)
     tesla.update()
     power.update()
-    light.update()
+    // light.update()
     walls.update()
     if (testDoorCollision(tesla, blueDoor)){
       youwon.style.display = "block";
@@ -204,12 +204,12 @@ var title = new Menu (
         power.batteries.splice(i,1) // remove the batteries at index i
       }
     }
-    for (var j = 0; j < light.lightning.length; j++) {
-      if (testCollision(tesla, light.lightning[j])) {
-        tesla.receiveLightning()
-        light.lightning.splice(j,1) // remove the batteries at index i
-      }
-    }
+    // for (var j = 0; j < light.lightning.length; j++) {
+    //   if (testCollision(tesla, light.lightning[j])) {
+    //     tesla.receiveLightning()
+    //     light.lightning.splice(j,1) // remove the batteries at index i
+    //   }
+    // }
   }  
 
   // function wallCollision(){

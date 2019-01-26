@@ -13,21 +13,21 @@ canvas.addEventListener('click', function(event) {
                 menuInit = true
                 rooms = new Rooms(2, 2)
                 power = new Power (40,30,'/battery5.png', 50)
-                lightning = new Power (40, 30,'/lightning.png', 5, 5)  
+                // lightning = new Power (40, 30,'/lightning.png', 5, 5)  
                 gameAnimation()
               break;
               case "medium":
                 menuInit = true
                 rooms = new Rooms(3, 3)
                 power = new Power (40,30,'/battery5.png', 50)
-                lightning = new Power (40, 30,'/lightning.png', 5, 5)  
+                // lightning = new Power (40, 30,'/lightning.png', 5, 5)  
                 gameAnimation()
               break;
               case "hard":
                 menuInit = true
                 rooms = new Rooms(3, 3)
                 power = new Power (40,30,'/battery5.png', 50)
-                lightning = new Power (40, 30,'/lightning.png', 5, 5)  
+                // lightning = new Power (40, 30,'/lightning.png', 5, 5)  
                 gameAnimation()
                 break;
               }
