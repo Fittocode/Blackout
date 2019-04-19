@@ -1,36 +1,36 @@
 body {
-    background: black;
+  background: black;
 }
 
-.menu-title {
-    margin: auto;
-    width: 30%;
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+  width: 50%;
+  min-width: 470px;
 }
 
 canvas {
-    background-image: url('img/background5.jpg');
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+  background-image: url('img/background5.jpg');
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 h1 {
-    font-size: 100px;
-    margin: auto;
-    text-align: center;
-    margin-top: 400px;
+  font-size: 100px;
+  margin: auto;
+  text-align: center;
+  margin-top: 400px;
 }
 
-
-
-#gameover{
-    color: lightblue;
+#gameover {
+  color: lightblue;
 }
 
 #youwon {
-    color: #ecda49;
+  color: #ecda49;
 }
-
-

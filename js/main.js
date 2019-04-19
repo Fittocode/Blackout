@@ -54,7 +54,7 @@ var easyBlue=[
   [0,300,10,50],
   [0,150,10,50]
 ]
-var meidumBlue=[]
+var mediumBlue=[]
 var hardBlue=[]
 
 randomNumber = Math.floor(Math.random()*easyBlue.length)  

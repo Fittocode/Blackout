@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-    <div class=menu-title>
-    <img src="img/title.png" alt="" width="600px">
+    <div class="menu-title">
+      <img src="img/title.png" alt="" width="400px" class="center" />
     </div>
-    <div id="youwon" style="display: none; position: fixed; left: 0px; top: 0px; height: 100%; width: 100%; background-color: black">
-            <h1>YOU WON</h1>
+    <div
+      id="youwon"
+      style="display: none; position: fixed; left: 0px; top: 0px; height: 100%; width: 100%; background-color: black"
+    >
+      <h1>YOU WON</h1>
     </div>
-    <div id="gameover" style="display: none; position: fixed; left: 0px; top: 0px; height: 100%; width: 100%; background-color: black">
-        <h1>YOU LOST</h1>
+    <div
+      id="gameover"
+      style="display: none; position: fixed; left: 0px; top: 0px; height: 100%; width: 100%; background-color: black"
+    >
+      <h1>YOU LOST</h1>
     </div>
     <style>
-        canvas {
-            border: 4px solid black;
-        }
+      canvas {
+        border: 4px solid black;
+      }
     </style>
-</head>
-<body>
-    <canvas id="canvas" width="1000" height="800">
-    </canvas>
-   
-    <audio id="bgMusic"src="sounds/Blackout.mp3"></audio>
+  </head>
+  <body>
+    <canvas id="canvas" width="1000" height="800"> </canvas>
+    <audio id="bgMusic" src="sounds/Blackout.mp3"></audio>
     <script src="js/soundhandling.js"></script>
     <script src="js/powerups/battery.js"></script>
     <script src="js/board/walls.js"></script>
@@ -35,6 +39,7 @@
     <script src="js/board/menu.js"></script>
     <script src="js/player.js"></script>
     <script src="js/board/exit.js"></script>
-    <script src="js/main.js"></script> <!-- main at end-->
-</body>
+    <script src="js/main.js"></script>
+    <!-- main at end-->
+  </body>
 </html>
